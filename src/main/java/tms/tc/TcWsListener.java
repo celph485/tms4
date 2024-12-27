@@ -14,7 +14,7 @@ public final class TcWsListener implements WebSocket.Listener {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TcWsListener.class);
 
-    private static final boolean ENABLE_DELAY = Boolean.FALSE;
+    private static final boolean ENABLE_DELAY = Boolean.TRUE;
 
     private static final long DELAY_SECONDS =
             Long.parseLong(PropertiesLoader.getInstance().getProperty(TC_WS_READ_DELAY_SECONDS));

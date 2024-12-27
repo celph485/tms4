@@ -12,14 +12,9 @@ import tms.tc.TcWsMessageHandler;
 
 import java.io.IOException;
 
-import static tms.common.Constants.CONFIG_FILE_LOCATION;
-import static tms.common.Constants.LOG_FILE_LOCATION;
-
 public class App {
     public static void main(String[] args) throws IOException, InterruptedException {
         CliArgProcessor.getInstance().process(args);
-        System.out.println("CONFIG FILE: " + System.getProperty(CONFIG_FILE_LOCATION));
-        System.out.println("LOG FILE: " + System.getProperty(LOG_FILE_LOCATION));
 
         final var nicerGlobeConsumer = NicerGlobeConsumer.getInstance();
         final var freTronConsumer = FreTronConsumer.getInstance();
@@ -39,8 +34,6 @@ public class App {
         final var wsClient = TcWsClient.getInstance(wsListener);
 
         final var sessionCookie = TcAuthService.getInstance().authenticate();
-
-        System.out.println("Auth sessionCookie: "+ sessionCookie);
 
         wsClient.connect(sessionCookie);
 

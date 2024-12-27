@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tms.common.JsonMapper;
-import tms.fretron.Payload;
 
 import java.net.URI;
 import java.net.http.HttpClient;

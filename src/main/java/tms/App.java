@@ -4,6 +4,7 @@ import tms.common.CliArgProcessor;
 import tms.common.DataStore;
 import tms.common.JsonMapper;
 import tms.fretron.FreTronConsumer;
+import tms.nicerglobe.NicerGlobeConsumer;
 import tms.tc.TcAuthService;
 import tms.tc.TcWsClient;
 import tms.tc.TcWsListener;
@@ -20,11 +21,13 @@ public class App {
         System.out.println("CONFIG FILE: " + System.getProperty(CONFIG_FILE_LOCATION));
         System.out.println("LOG FILE: " + System.getProperty(LOG_FILE_LOCATION));
 
+        final var nicerGlobeConsumer = NicerGlobeConsumer.getInstance();
         final var freTronConsumer = FreTronConsumer.getInstance();
 
         final var dataStore = DataStore.getInstance();
 
         dataStore.addConsumer(freTronConsumer);
+        dataStore.addConsumer(nicerGlobeConsumer);
 
         final var wsMessageHandler = TcWsMessageHandler.getInstance(
                 JsonMapper.getInstance(),

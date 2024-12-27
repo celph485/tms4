@@ -25,11 +25,11 @@ public final class PropertiesLoader {
     }
 
     public String getProperty(final ConfigKey key){
-        return properties.getProperty(key.getValue());
+        return properties.getProperty(key.value());
     }
 
     public String getProperty(final ConfigKey key, final String defaultVal){
-        final var val = properties.getProperty(key.getValue());
+        final var val = properties.getProperty(key.value());
         return Objects.isNull(val)?defaultVal:val;
     }
 

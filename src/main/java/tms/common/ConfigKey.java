@@ -9,7 +9,10 @@ public enum ConfigKey {
     TC_WS_READ_DELAY_SECONDS("tc.ws.read.delay.seconds"),
     FT_API_ENDPOINT("ft.api.endpoint"),
     FT_API_VENDOR("ft.api.vendor"),
-    FT_ALLOWED_DEVICES("ft.allowed.devices")
+    FT_ALLOWED_DEVICES("ft.allowed.devices"),
+    NICER_GLOBE_API_ENDPOINT("nicer.globe.api.endpoint"),
+    NICER_GLOBE_API_SECRET_KEY("nicer.globe.api.secret.key"),
+    NICER_GLOBE_ALLOWED_DEVICES("nicer.globe.allowed.devices")
     ;
 
     private final String value;
@@ -18,7 +21,7 @@ public enum ConfigKey {
         this.value = value;
     }
 
-    public String getValue() {
+    public String value() {
         return value;
     }
 }

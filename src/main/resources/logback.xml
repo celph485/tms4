@@ -11,7 +11,7 @@
         <file>${logFileLocation:-logs}\tms4.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <maxFileSize>100MB</maxFileSize>
-            <fileNamePattern>tms4.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${logFileLocation:-logs}\tms4.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
         </rollingPolicy>
         <append>true</append>
         <encoder>
@@ -22,7 +22,18 @@
         <file>${logFileLocation:-logs}\tms4.ft.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <maxFileSize>100MB</maxFileSize>
-            <fileNamePattern>tms4.ft.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${logFileLocation:-logs}\tms4.ft.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+        </rollingPolicy>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="NICER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logFileLocation:-logs}\tms4.nicer.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <maxFileSize>100MB</maxFileSize>
+            <fileNamePattern>${logFileLocation:-logs}\tms4.nicer.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
         </rollingPolicy>
         <append>true</append>
         <encoder>
@@ -32,6 +43,9 @@
     <logger name="tms" level="DEBUG" />
     <logger name="tms.fretron" level="DEBUG" additivity="true">
         <appender-ref ref="FT" />
+    </logger>
+    <logger name="tms.nicerglobe" level="DEBUG" additivity="true">
+        <appender-ref ref="NICER" />
     </logger>
     <!-- Root logger definition -->
     <root level="info">

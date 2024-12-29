@@ -32,6 +32,10 @@ public final class DataStore {
         this.consumers.add(consumer);
     }
 
+    public boolean hasAnyConsumers(){
+        return !this.consumers.isEmpty();
+    }
+
     public static DataStore getInstance(){
         return Holder.INSTANCE;
     }

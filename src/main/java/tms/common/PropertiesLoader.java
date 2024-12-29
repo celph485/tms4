@@ -1,6 +1,8 @@
 package tms.common;
 
 import java.io.FileInputStream;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.Properties;
 
@@ -31,6 +33,13 @@ public final class PropertiesLoader {
     public String getProperty(final ConfigKey key, final String defaultVal){
         final var val = properties.getProperty(key.value());
         return Objects.isNull(val)?defaultVal:val;
+    }
+
+    public List<Long> getListOfLongValues(final ConfigKey key){
+        final String val =  properties.getProperty(key.value());
+        return Arrays.stream(val.split(","))
+                .map(Long::parseLong)
+                .toList();
     }
 
     private static class Holder {

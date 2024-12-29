@@ -1,10 +1,12 @@
 <configuration>
     <!-- Console appender for logging to the console -->
-<!--    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+<!--
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
-    </appender>-->
+    </appender>
+-->
 
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -23,21 +25,23 @@
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <maxFileSize>100MB</maxFileSize>
             <fileNamePattern>${logFileLocation:-logs}\tms4.ft.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>5</maxHistory>
         </rollingPolicy>
         <append>true</append>
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{"yyyy-MM-dd'T'HH:mm:ss,SSS"} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
     <appender name="NICER" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${logFileLocation:-logs}\tms4.nicer.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <maxFileSize>100MB</maxFileSize>
             <fileNamePattern>${logFileLocation:-logs}\tms4.nicer.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>5</maxHistory>
         </rollingPolicy>
         <append>true</append>
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{"yyyy-MM-dd'T'HH:mm:ss,SSS"} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
     <logger name="tms" level="DEBUG" />
@@ -49,7 +53,7 @@
     </logger>
     <!-- Root logger definition -->
     <root level="info">
-        <!--<appender-ref ref="STDOUT" />-->
+<!--        <appender-ref ref="STDOUT" />-->
         <appender-ref ref="FILE" />
     </root>
 
